@@ -28,8 +28,8 @@ export async function initZigbee(serialPort) {
       // 監聽新設備加入網路
       controller.on("deviceJoined", (device) => {
         console.log(`[ZIGBEE] 新設備加入: ${device.ieeeAddr}`);
-        handler(device.ieeeAddr, { 
-          type: 'deviceJoined',
+        handler(device.ieeeAddr, {
+          type: "deviceJoined",
           device: {
             ieeeAddr: device.ieeeAddr,
             networkAddress: device.networkAddress,
@@ -37,16 +37,16 @@ export async function initZigbee(serialPort) {
             manufacturerName: device.manufacturerName,
             powerSource: device.powerSource,
             modelID: device.modelID,
-            interviewCompleted: device.interviewCompleted
-          }
+            interviewCompleted: device.interviewCompleted,
+          },
         });
       });
 
       // 監聽設備面試完成
       controller.on("deviceInterview", (device) => {
         console.log(`[ZIGBEE] 設備面試完成: ${device.ieeeAddr}`);
-        handler(device.ieeeAddr, { 
-          type: 'deviceInterview',
+        handler(device.ieeeAddr, {
+          type: "deviceInterview",
           device: {
             ieeeAddr: device.ieeeAddr,
             networkAddress: device.networkAddress,
@@ -54,32 +54,32 @@ export async function initZigbee(serialPort) {
             manufacturerName: device.manufacturerName,
             powerSource: device.powerSource,
             modelID: device.modelID,
-            interviewCompleted: device.interviewCompleted
-          }
+            interviewCompleted: device.interviewCompleted,
+          },
         });
       });
 
       // 監聽設備狀態更新
       controller.on("deviceAnnounce", (device) => {
         console.log(`[ZIGBEE] 設備狀態更新: ${device.ieeeAddr}`);
-        handler(device.ieeeAddr, { 
-          type: 'deviceUpdate',
+        handler(device.ieeeAddr, {
+          type: "deviceUpdate",
           device: {
             ieeeAddr: device.ieeeAddr,
             networkAddress: device.networkAddress,
-            lastSeen: Date.now()
-          }
+            lastSeen: Date.now(),
+          },
         });
       });
 
       // 監聽設備離開網路
       controller.on("deviceLeave", (device) => {
         console.log(`[ZIGBEE] 設備離開網路: ${device.ieeeAddr}`);
-        handler(device.ieeeAddr, { 
-          type: 'deviceLeave',
+        handler(device.ieeeAddr, {
+          type: "deviceLeave",
           device: {
-            ieeeAddr: device.ieeeAddr
-          }
+            ieeeAddr: device.ieeeAddr,
+          },
         });
       });
     },
