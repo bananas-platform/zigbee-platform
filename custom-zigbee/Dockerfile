@@ -1,12 +1,14 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base-nodejs:16.3.4
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:14.0.0
 FROM $BUILD_FROM
 
-LABEL maintainer="chaoen5@gmail.com"
-
-# 安裝必要的套件
+# 安裝 Node.js
 RUN apk add --no-cache \
+    nodejs \
+    npm \
     udev \
     && rm -rf /var/cache/apk/*
+
+LABEL maintainer="chaoen5@gmail.com"
 
 # 設定工作目錄
 WORKDIR /app
