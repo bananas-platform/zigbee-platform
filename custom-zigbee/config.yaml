@@ -3,7 +3,7 @@ version: "1.0.0"
 slug: "custom_zigbee"
 description: "自訂 Zigbee 控制 Add-on (Node.js)"
 arch:
-  - amd64
+  - aarch64
 startup: services
 boot: auto
 init: false
