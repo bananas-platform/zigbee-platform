@@ -14,14 +14,25 @@ udev: true
 services:
   - mqtt:need
 hassio_api: true
+hassio_role: admin
+homeassistant_api: true
 ports:
   1883/tcp: 1883
+privileged: true
+map:
+  - type: share
+    read_only: false
+  - type: homeassistant_config
+    read_only: false
+    path: /config
+  - type: addon_config
+    read_only: false
+    path: /addon_config
 options:
   mqtt_host: "mqtt.server.local"
   mqtt_port: 1883
   mqtt_user: "mqttuser"
   mqtt_pass: "mqttpass"
-  zigbee_port: "/dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_48fcb022c649ef118ac8d18cff00cc63-if00-port0"
 schema:
   mqtt_host: str
   mqtt_port: int
