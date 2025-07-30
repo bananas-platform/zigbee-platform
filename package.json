@@ -1,0 +1,10 @@
+{
+  "name": "custom-zigbee-gateway",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "dependencies": {
+    "mqtt": "^5.3.0",
+    "zigbee-herdsman": "^0.17.0"
+  }
+}
