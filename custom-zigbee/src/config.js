@@ -27,8 +27,20 @@ function findZigbeeDevice() {
         .split("\n");
       for (const device of devices) {
         if (device && device.length > 0) {
-          console.log(`[CONFIG] 找到 Zigbee 設備: ${device}`);
-          return device;
+          // 如果是符號連結，獲取實際設備路徑
+          let actualDevice = device;
+          try {
+            if (fs.lstatSync(device).isSymbolicLink()) {
+              actualDevice = execSync(`readlink -f "${device}"`, { encoding: 'utf8' }).trim();
+              console.log(`[CONFIG] 找到 Zigbee 設備: ${device} -> ${actualDevice}`);
+            } else {
+              console.log(`[CONFIG] 找到 Zigbee 設備: ${device}`);
+            }
+          } catch (error) {
+            console.log(`[CONFIG] 找到 Zigbee 設備: ${device}`);
+          }
+
+          return actualDevice;
         }
       }
     } catch (error) {

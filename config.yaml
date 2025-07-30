@@ -3,22 +3,20 @@ version: "1.0.0"
 slug: "custom_zigbee"
 description: "自訂 Zigbee 控制 Add-on (Node.js)"
 arch:
+  - amd64
+  - armv7
   - aarch64
 startup: services
 boot: auto
 init: false
 ports:
   1883/tcp: 1883
-devices:
-  - /dev/ttyUSB0
-  - /dev/ttyACM0
-privileged: true
 options:
-  mqtt_host: "192.168.68.68"
+  mqtt_host: "mqtt.server.local"
   mqtt_port: 1883
-  mqtt_user: ""
-  mqtt_pass: ""
-  zigbee_port: "auto"
+  mqtt_user: "mqttuser"
+  mqtt_pass: "mqttpass"
+  zigbee_port: "/dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_48fcb022c649ef118ac8d18cff00cc63-if00-port0"
 schema:
   mqtt_host: str
   mqtt_port: int
@@ -26,4 +24,4 @@ schema:
   mqtt_pass: str
   zigbee_port: str
 auto_update: true
-image: "ghcr.io/bananas-platform/zigbee-platform/zigbee-addon"
+image: "ghcr.io/chaoen/bananas-zigbee-addons-{arch}"
