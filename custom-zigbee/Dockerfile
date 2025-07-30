@@ -1,7 +1,6 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:14.0.0
-FROM $BUILD_FROM
+FROM alpine:3.18
 
-# 安裝 Node.js
+# 安裝 Node.js 和必要套件
 RUN apk add --no-cache \
     nodejs \
     npm \
