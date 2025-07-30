@@ -4,8 +4,6 @@ slug: "custom_zigbee"
 description: "自訂 Zigbee 控制 Add-on (Node.js)"
 arch:
   - amd64
-  - armv7
-  - aarch64
 startup: services
 boot: auto
 init: false
@@ -24,4 +22,4 @@ schema:
   mqtt_pass: str
   zigbee_port: str
 auto_update: true
-image: "ghcr.io/chaoen/bananas-zigbee-addons-{arch}"
+image: "ghcr.io/chaoen/bananas-zigbee-addons-amd64"

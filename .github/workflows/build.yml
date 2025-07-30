@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch: [amd64, armv7, aarch64]
 
     steps:
       - name: Checkout code
@@ -31,8 +28,8 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./custom-zigbee
-          platforms: linux/${{ matrix.arch }}
+          platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/chaoen/bananas-zigbee-addons-${{ matrix.arch }}:latest
-            ghcr.io/chaoen/bananas-zigbee-addons-${{ matrix.arch }}:${{ github.sha }}
+            ghcr.io/chaoen/bananas-zigbee-addons-amd64:latest
+            ghcr.io/chaoen/bananas-zigbee-addons-amd64:${{ github.sha }}
