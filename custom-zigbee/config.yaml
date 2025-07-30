@@ -22,4 +22,4 @@ schema:
   mqtt_pass: str
   zigbee_port: str
 auto_update: true
-image: "ghcr.io/bananas-platform/zigbee-platform/zigbee-addon:latest"
+image: "ghcr.io/bananas-platform/zigbee-platform/zigbee-addon"
