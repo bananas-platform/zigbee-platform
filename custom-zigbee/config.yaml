@@ -9,6 +9,9 @@ boot: auto
 init: false
 ports:
   1883/tcp: 1883
+devices:
+  - /dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_48fcb022c649ef118ac8d18cff00cc63-if00-port0
+privileged: true
 options:
   mqtt_host: "192.168.68.68"
   mqtt_port: 1883
