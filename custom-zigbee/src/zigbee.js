@@ -3,6 +3,8 @@ import { Controller } from "zigbee-herdsman";
 let controller;
 
 export async function initZigbee(serialPort) {
+  console.log(`[ZIGBEE] 初始化 Zigbee 控制器，使用自動偵測模式`);
+
   controller = new Controller({
     serialPort: { path: null },
     databasePath: "/data/zigbee.db",

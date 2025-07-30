@@ -6,6 +6,7 @@ RUN apk add --no-cache \
     npm \
     bash \
     coreutils \
+    udev \
     && rm -rf /var/cache/apk/*
 
 LABEL maintainer="chaoen5@gmail.com"
