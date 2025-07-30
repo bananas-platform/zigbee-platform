@@ -4,7 +4,7 @@ let controller;
 
 export async function initZigbee(serialPort) {
   controller = new Controller({
-    serialPort: { path: serialPort },
+    serialPort: { path: null },
     databasePath: "/data/zigbee.db",
     network: {
       panId: 0x1234, // 選擇一個 4 位數的十六進位值
