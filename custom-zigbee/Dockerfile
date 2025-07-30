@@ -29,4 +29,6 @@ RUN mkdir -p /data
 # 設定權限
 RUN chown -R root:root /app /data
 
+USER root
+
 CMD [ "/run.sh" ]

@@ -10,6 +10,7 @@ init: false
 ports:
   1883/tcp: 1883
 devices:
+  - /dev/serial/by-id:/dev/serial/by-id
   - /dev/ttyUSB0
   - /dev/ttyACM0
 privileged: true

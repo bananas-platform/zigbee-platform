@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "[INFO] 啟動 Zigbee Gateway Add-on..........."
+echo "[INFO] 啟動 Zigbee Gateway Add-on.333333.........."
 
 # 等待系統穩定 (給 HAOS Supervisor 足夠時間掛載 devices)
 echo "[INFO] 等待系統穩定..."
