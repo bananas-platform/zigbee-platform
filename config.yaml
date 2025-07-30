@@ -1,5 +1,5 @@
 name: "Custom Zigbee Gateway"
-version: "1.0.0"
+version: "1.0.1"  # 升級版本，確保 HAOS 能偵測更新
 slug: "custom_zigbee"
 description: "自訂 Zigbee 控制 Add-on (Node.js)"
 arch:
@@ -9,16 +9,25 @@ arch:
 startup: services
 boot: auto
 init: false
+
+# 硬體與系統權限
 uart: true
 udev: true
+privileged: true
+full_access: true   # 確保能讀寫 Zigbee Dongle，如果 devices mapping 無法解決，可保留這行
+
+# 服務與 API 權限
 services:
   - mqtt:need
 hassio_api: true
 hassio_role: admin
 homeassistant_api: true
+
+# Port 映射 (如果 Add-on 要跑內建 MQTT 或 web API)
 ports:
   1883/tcp: 1883
-privileged: true
+
+# 掛載 Host 資料夾
 map:
   - type: share
     read_only: false
@@ -28,16 +37,27 @@ map:
   - type: addon_config
     read_only: false
     path: /addon_config
+
+# 自動偵測 Zigbee Dongle 時可選擇手動設定
 options:
   mqtt_host: "mqtt.server.local"
   mqtt_port: 1883
   mqtt_user: "mqttuser"
   mqtt_pass: "mqttpass"
+  zigbee_port: "/dev/serial/by-id/usb-xxxx"   # 預設值，可在 UI 調整
 schema:
   mqtt_host: str
   mqtt_port: int
   mqtt_user: str
   mqtt_pass: str
   zigbee_port: str
+
+# 自動更新 Docker image
 auto_update: true
+
+# Docker image
 image: "ghcr.io/chaoen/bananas-zigbee-addons-{arch}"
+
+# 指定 USB 裝置映射 (可用 by-id 路徑確保穩定)
+devices:
+  - /dev/serial/by-id:/dev/serial/by-id
