@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "[INFO] 啟動 Zigbee Gateway Add-on..."
+echo "[INFO] 啟動 Zigbee Gateway Add-on333..."
 
 # 等待系統穩定
 echo "[INFO] 等待系統穩定..."

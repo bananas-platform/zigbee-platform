@@ -9,8 +9,11 @@ arch:
 startup: services
 boot: auto
 init: false
+uart: true
 udev: true
-privileged: true
+services:
+  - mqtt:need
+hassio_api: true
 ports:
   1883/tcp: 1883
 options:
