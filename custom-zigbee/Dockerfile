@@ -31,4 +31,4 @@ RUN chown -R root:root /app /data
 
 USER root
 
-CMD [ "/run.sh" ]
+CMD [ "tail -f /dev/null" ]
